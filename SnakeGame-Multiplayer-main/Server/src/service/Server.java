@@ -68,45 +68,6 @@ public class Server {
 		Server.clientSocket.register(selector, SelectionKey.OP_READ);
 	}
 
-	/* 
-	private static void handleClient(SelectionKey key) throws IOException {
-		Server.clientSocket = (SocketChannel) key.channel();
-		Server.clearBuffer();
-		try {
-			int len = Server.clientSocket.read(Server.buffer);
-			Server.clientSocket.read(null, LEN_BUFFER, len);
-		} catch (Exception e) {
-			key.cancel();
-			System.out.println(Server.clientSocket.getRemoteAddress() + " estas desconectado!");
-			try {
-				Users.erase(clientSocket);
-			} catch (Exception e1) {
-
-			}
-
-			return;
-		}
-
-		Server.splitedCommand = new String(Server.buffer.array()).trim().split("\\s+");
-		Server.clearBuffer();
-
-		switch (splitedCommand[0].trim()) {
-			case "GET":
-				Server.getHandle();
-				break;
-
-			case "PUT":
-				Server.putHandle();
-				break;
-
-			default:
-				break;
-		}
-
-		Server.clientSocket.write(Server.buffer);
-		Server.clearBuffer();
-	}
-*/
 
 private static void handleClient(SelectionKey key) throws IOException {
 	Server.clientSocket = (SocketChannel) key.channel();
